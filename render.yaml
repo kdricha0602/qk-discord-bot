@@ -1,0 +1,18 @@
+# Render blueprint for the Quantkernal Discord bot.
+# Secrets are NOT stored here: with `sync: false` Render leaves the value
+# alone and you set it in the dashboard (or it stays from a previous deploy).
+
+services:
+  - type: worker
+    name: quantkernal-discord-bot
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DISCORD_GUILD_ID
+        sync: false
